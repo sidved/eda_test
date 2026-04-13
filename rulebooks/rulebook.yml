@@ -1,0 +1,21 @@
+ #Task 1: First, ensure the activation is completely disabled
+  - name: "Disable Rulebook activation prior to editing"
+    ansible.eda.rulebook_activation:
+      name: "test"
+      state: disabled
+
+  # Task 2: Now that it is disabled, apply the parameter updates
+  - name: "Update Rulebook activation parameters"
+    ansible.eda.rulebook_activation:
+      name: "test"
+      project_name: "..."
+      rulebook_name: "..."
+      organization_name: "..."
+      decision_environment: "..."
+      description: "My updated description"
+      log_level: error
+      eda_credentials: "..."
+      # Keep state disabled during the update, or change to 'enabled' if you want it to restart immediately
+      state: disabled
+      extra_vars:
+        my_custom_var: "changeme"
